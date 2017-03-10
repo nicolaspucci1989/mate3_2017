@@ -4,22 +4,34 @@
 #define CANTIDAD 4
 
 
+void maximo(int numero, int *maximo)
+{
+  if(numero > *maximo)
+    *maximo = numero;
+}
+
+
+void minimo(int numero, int *minimo)
+{
+  if(numero < *minimo)
+    *minimo = numero;
+}
+
+
 int main()
 {
   int i;
-  int maximo = -99999, minimo = 99999;
+  int max = -99999, min = 99999;
   int numero;
 
 
   printf("Ingrese %d numeros\n", CANTIDAD);
   for(i=0; i<CANTIDAD; i++){
     scanf("%d", &numero);
-    if(numero > maximo)
-      maximo = numero;
-    if(numero < minimo)
-      minimo = numero;
+    minimo(numero, &min);
+    maximo(numero, &max);
   }
-  printf("Maximo %d\nMinimo %d\n", maximo, minimo);
+  printf("Maximo %d\nMinimo %d\n", max, min);
 
 
   return 0;
