@@ -11,24 +11,24 @@ void ingreso(int v[])
 }
 
 
-int compPar(int i, int v[])
+int compPar(int a)
 {
-  return v[i]%2 == 0;
+  return a%2 == 0;
 }
 
 
-int compImpar(int i, int v[])
+int compImpar(int a)
 {
-  return v[i]%2 != 0;
+  return a%2 != 0;
 }
 
 
-void impresion(int v[], int (*comp)(int i, int vect[]))
+void impresion(int v[], int (*comp)(int a))
 {
   int i;
 
   for(i=0; i<ELEMENTOS; i++){
-    if((*comp)(i, v))
+    if((*comp)(v[i]))
       printf("%d", v[i]);
   }
   putchar('\n');
