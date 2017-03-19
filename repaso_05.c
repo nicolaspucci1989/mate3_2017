@@ -5,6 +5,21 @@
 #include <stdlib.h>
 #define FILAS 2
 #define COLUMNAS 2
+#define SALIDA 0
+
+
+int menu()
+{
+  int opcion;
+  printf("%s\n%s\n%s\n%s\n","1-Ingresar datos.",
+                            "2-Ver suma par.",
+                            "3-Ver suma impar",
+                            "0-Salir");
+  scanf("%d", &opcion);
+
+
+  return opcion;
+}
 
 
 void ingresoDatos(int m[][COLUMNAS])
@@ -64,10 +79,22 @@ int verSumaImpar(int m[][COLUMNAS])
 int main()
 {
   int matriz[FILAS][COLUMNAS];
-  printf("Ingrese %d valores\n", FILAS*COLUMNAS);
-  ingresoDatos(matriz);
-  printf("Suma de valores pares %d\n", verSumaPar(matriz));
-  printf("Suma de valores impares %d\n", verSumaImpar(matriz));
-  imprimirMatriz(matriz);
+  int opcion;
+  while((opcion = menu()) != SALIDA){
+    switch (opcion) {
+      case 1:
+        printf("Ingrese %d valores\n", FILAS*COLUMNAS);
+        ingresoDatos(matriz);
+        break;
+      case 2:
+        printf("Suma de valores pares %d\n", verSumaPar(matriz));
+        break;
+      case 3:
+        printf("Suma de valores impares %d\n", verSumaImpar(matriz));
+        break;
+      default:
+        puts("Opcion incorrecta");
+    }
+  }
   return 0;
 }
