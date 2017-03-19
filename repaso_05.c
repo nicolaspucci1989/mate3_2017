@@ -80,17 +80,31 @@ int main()
 {
   int matriz[FILAS][COLUMNAS];
   int opcion;
+  int seIngresarosDatos = 0;
+
+
   while((opcion = menu()) != SALIDA){
     switch (opcion) {
       case 1:
-        printf("Ingrese %d valores\n", FILAS*COLUMNAS);
-        ingresoDatos(matriz);
+        if(seIngresarosDatos)
+          puts("Ya se ingresaron los datos");
+        else {
+          printf("Ingrese %d valores\n", FILAS*COLUMNAS);
+          ingresoDatos(matriz);
+          seIngresarosDatos = 1;
+        }
         break;
       case 2:
-        printf("Suma de valores pares %d\n", verSumaPar(matriz));
+        if(seIngresarosDatos)
+          printf("Suma de valores pares %d\n", verSumaPar(matriz));
+        else
+          puts("Falta el ingreso de datos");
         break;
       case 3:
-        printf("Suma de valores impares %d\n", verSumaImpar(matriz));
+        if(seIngresarosDatos)
+          printf("Suma de valores impares %d\n", verSumaImpar(matriz));
+        else
+          puts("Falta el ingreso de datos");
         break;
       default:
         puts("Opcion incorrecta");
