@@ -17,9 +17,8 @@ void impresion(int v[])
 {
   int i;
   for(i=0; i<NUMEROS; i++){
-    if(i%2 == 0){
-      printf("%d ", v[i]);
-    }
+    if(v[i]%2 == 0)
+      printf("%d ", i);
   }
   putchar('\n');
 }
