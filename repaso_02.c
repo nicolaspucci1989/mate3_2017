@@ -32,6 +32,11 @@ int main()
     maximo(numero, &max);
   }
   printf("Maximo %d\nMinimo %d\n", max, min);
+  fflush(stdin);
+
+
+  puts("Presione una enter para continuar");
+  getchar();
 
 
   return 0;
