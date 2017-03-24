@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #define NUMEROS 5
 
+
 void ingreso(int v[])
 {
   int i;
@@ -17,8 +18,8 @@ void impresion(int v[])
 {
   int i;
   for(i=0; i<NUMEROS; i++){
-    if(v[i]%2 == 0)
-      printf("%d ", i);
+    if(i%2 == 0)
+      printf("%d ", v[i]);
   }
   putchar('\n');
 }
@@ -34,12 +35,12 @@ int main()
 
   ingreso(vector);
   fflush(stdin);
-  printf("Numeros pares: ");
+  printf("Numeros de indice par: ");
   impresion(vector);
   putchar('\n');
 
 
-  puts("Presione enter para continuar");
+  puts("Presione una tecla para continuar");
   getchar();
   return 0;
 }
