@@ -40,7 +40,7 @@ int main()
   putchar('\n');
 
 
-  puts("Presione una tecla para continuar");
+  puts("Presione una enter para continuar");
   getchar();
   return 0;
 }
