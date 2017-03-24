@@ -34,7 +34,9 @@ int main()
 
   ingreso(vector);
   fflush(stdin);
+  printf("Numeros pares: ");
   impresion(vector);
+  putchar('\n');
 
 
   puts("Presione enter para continuar");
