@@ -33,18 +33,18 @@
 
 ## Clase 6
 1. Escriba un programa que dado un árbol con raíz y un vértice v determine:
-  * El padre de v
-  * Los ancestros de v
-  * Los hijos de v
-  * Los descendientes de v
-  * Los hermanos de v
-  * Si v es un vertice terminal
+  1. El padre de v
+  2. Los ancestros de v
+  3. Los hijos de v
+  4. Los descendientes de v
+  5. Los hermanos de v
+  6. Si v es un vertice terminal
 2. Escriba un programa que determine si una gráfica es conexa
 3. Escriba un programa que determine si una gráfica es un árbol
 4. Escriba un programa para realizar recorridos
-  * Pre orden
-  * Post orden
-  * In orden
+  1. Pre orden
+  2. Post orden
+  3. In orden
 
 ## Clase 7
 1. Escriba un programa que acepte como entrada una red con un flujo dado y produzca todas las trayectorias posibles del origen al destino para las que pueda aumentar el flujo
