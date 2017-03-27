@@ -14,3 +14,6 @@ Una relacion *R* es simetrica: para toda *x*, *y*, si *(x, y)* pertenece a *R*, 
 
 ## 4. Relacion simetrica.
 Si para toda *x, y* que pertenece a *X*, si *(x, y)* pertenece a *R* y *x* distinta de *y*, entonces *(y, x)* no pertenece a *R*.
+
+## 5. Relacion transitiva.
+Una relacon *R* en un conjunto *X* es transitiva si para toda *x, y, x* que pertenece a *X*, si *(x, y)* y *(y, z)* pertence a *R*, entonces *(x, z)* pertenece a *R*.
