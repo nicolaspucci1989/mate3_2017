@@ -33,7 +33,6 @@
 
 ## Clase 6
 1. Escriba un programa que dado un árbol con raíz y un vértice v determine:
-El padre de v
   * El padre de v
   * Los ancestros de v
   * Los hijos de v
