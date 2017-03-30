@@ -98,20 +98,36 @@ void imprimirImagen(char v[])
   putchar('\n');
 }
 
+void ingresoConjuntoA(int conjuntoA[])
+{
+  int i;
+  for(i=0; i<ELEMENTOS_A; i++){
+    scanf("%d", &conjuntoA[i]);
+  }
+}
+
+
 int main(){
-  int conjuntoA[] = {1, 2, 3, 8};
+  // int conjuntoA[] = {1, 2, 3, 8};
+  int conjuntoA[ELEMENTOS_A];
   char conjuntoB[] = {'a' ,'b', 'j', 'k'};
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
   char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
+
+  printf("Ingrese %d elementos del conjunto A\n", ELEMENTOS_A);
+  ingresoConjuntoA(conjuntoA);
+
+
   buscarDominio(rel, conjuntoA, dominio);
   buscarImagen(rel, conjuntoB, imagen);
-  
+
   imprimirDominio(dominio);
   imprimirImagen(imagen);
 
 
+  fflush(stdin);
   puts("Presione enter para continuar");
   getchar();
   return 0;
