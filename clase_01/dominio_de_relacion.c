@@ -107,10 +107,21 @@ void ingresoConjuntoA(int conjuntoA[])
 }
 
 
+void ingresoConjuntoB(char conjuntoB[])
+{
+  int i;
+  for(i=0; i<ELEMENTOS_B; i++){
+    scanf("%c", &conjuntoB[i]);
+    fflush(stdin);
+  }
+}
+
+
 int main(){
   // int conjuntoA[] = {1, 2, 3, 8};
   int conjuntoA[ELEMENTOS_A];
-  char conjuntoB[] = {'a' ,'b', 'j', 'k'};
+  // char conjuntoB[] = {'a' ,'b', 'j', 'k'};
+  char conjuntoB[ELEMENTOS_B];
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
   char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
@@ -118,7 +129,11 @@ int main(){
 
   printf("Ingrese %d elementos del conjunto A\n", ELEMENTOS_A);
   ingresoConjuntoA(conjuntoA);
+  fflush(stdin);
 
+
+  printf("Ingrese %d elementos del conjunto B\n", ELEMENTOS_B);
+  ingresoConjuntoB(conjuntoB);
 
   buscarDominio(rel, conjuntoA, dominio);
   buscarImagen(rel, conjuntoB, imagen);
