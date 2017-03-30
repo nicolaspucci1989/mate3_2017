@@ -29,6 +29,24 @@ int estaEnDominio(int elementoA, int conjuntoA[])
 }
 
 
+int estaEnImagen(char elementoB, char conjuntoB[])
+{
+  int i;
+  char res=-1;
+
+  //por cada elemento del conjuto B
+  //esta el elementoB?
+  for(i=0; i<ELEMENTOS_B; i++){
+    if(conjuntoB[i] == elementoB){
+      res = 1;
+      break;
+    } else
+      res = 0;
+  }
+  return res;
+}
+
+
 void buscarDominio(struct relacion rel[], int conjuntoA[], int dominio[])
 {
   int i, j=0;
@@ -37,6 +55,20 @@ void buscarDominio(struct relacion rel[], int conjuntoA[], int dominio[])
   for(i=0; i<ELEMENTOS_RELACION; i++){
     if(estaEnDominio(rel[i].elementoX, conjuntoA)){
       dominio[j] = rel[i].elementoX;
+      j++;
+    }
+  }
+}
+
+
+void buscarImagen(struct relacion rel[], char conjuntoB[], char imagen[])
+{
+  int i, j=0;
+
+
+  for(i=0; i<ELEMENTOS_RELACION; i++){
+    if(estaEnImagen(rel[i].elementoY, conjuntoB)){
+      imagen[j] = rel[i].elementoY;
       j++;
     }
   }
@@ -55,14 +87,30 @@ void imprimirDominio(int v[])
 }
 
 
+void imprimirImagen(char v[])
+{
+  int i=0;
+  printf("Imagen: ");
+  while(v[i] != -1){
+    printf("%c ", v[i]);
+    i++;
+  }
+  putchar('\n');
+}
+
 int main(){
   int conjuntoA[] = {1, 2, 3, 8};
   char conjuntoB[] = {'a' ,'b', 'j', 'k'};
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
+  char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
   buscarDominio(rel, conjuntoA, dominio);
   imprimirDominio(dominio);
+
+  buscarImagen(rel, conjuntoB, imagen);
+  imprimirImagen(imagen);
+
 
   puts("Presione enter para continuar");
   getchar();
