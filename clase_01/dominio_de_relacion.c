@@ -106,9 +106,9 @@ int main(){
   char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
   buscarDominio(rel, conjuntoA, dominio);
-  imprimirDominio(dominio);
-
   buscarImagen(rel, conjuntoB, imagen);
+  
+  imprimirDominio(dominio);
   imprimirImagen(imagen);
 
 
