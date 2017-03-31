@@ -6,74 +6,49 @@
 #define TAMVECTOR(x) ((sizeof x) / (sizeof *x))
 
 struct relacion {
-  int elementoX;
-  char elementoY;
+  int x;
+  char y;
 };
 
 
-int estaEnDominio(int elementoA, int conjuntoA[])
+  // segun un x que pertenece al conjunto A
+  // si x esta relacionado con algun b que pertenece a B
+  // x esta en el dominio
+
+int estaEnLaRelacionX(int elementoX, struct relacion rel[])
 {
   int i;
-  int res=0;
-
-  //por cada elemento del conjuto A
-  //esta el elementoA?
-  for(i=0; i<ELEMENTOS_A; i++){
-    if(conjuntoA[i] == elementoA){
-      res = 1;
+  int res = -1;
+  for(i=0; i<ELEMENTOS_RELACION; i++){
+    if(elementoX == rel[i].x){
+      res = i;
       break;
-    } else
-      res = 0;
+    }
   }
   return res;
 }
 
-
-int estaEnImagen(char elementoB, char conjuntoB[])
+int estaEnB(char n, char conjuntoB[])
 {
   int i;
-  char res=-1;
-
-  //por cada elemento del conjuto B
-  //esta el elementoB?
+  int res = 0;
   for(i=0; i<ELEMENTOS_B; i++){
-    if(conjuntoB[i] == elementoB){
+    if(n == conjuntoB[i]){
       res = 1;
       break;
-    } else
-      res = 0;
+    }
   }
   return res;
 }
 
 
-void buscarDominio(struct relacion rel[], int conjuntoA[], int dominio[])
+int estaEnDominio(int n, struct relacion rel[], char conjuntoB[])
 {
-  int i, j=0;
-
-
-  for(i=0; i<ELEMENTOS_RELACION; i++){
-    if(estaEnDominio(rel[i].elementoX, conjuntoA)){
-      dominio[j] = rel[i].elementoX;
-      j++;
-    }
-  }
+  int i=0;
+  if((i = estaEnLaRelacionX(n, rel) != -1) && estaEnB(rel[i].y, conjuntoB))
+    i = 1;
+  return i;
 }
-
-
-void buscarImagen(struct relacion rel[], char conjuntoB[], char imagen[])
-{
-  int i, j=0;
-
-
-  for(i=0; i<ELEMENTOS_RELACION; i++){
-    if(estaEnImagen(rel[i].elementoY, conjuntoB)){
-      imagen[j] = rel[i].elementoY;
-      j++;
-    }
-  }
-}
-
 
 void imprimirDominio(int v[])
 {
@@ -122,43 +97,42 @@ void ingresoRelacion(struct relacion rel[])
   int i;
   for(i=0; i<ELEMENTOS_RELACION; i++)
   {
-    scanf("%d", &rel[i].elementoX);
+    scanf("%d", &rel[i].x);
     fflush(stdin);
-    scanf("%c", &rel[i].elementoY);
+    scanf("%c", &rel[i].y);
     fflush(stdin);
   }
 }
 
 
 int main(){
-  // int conjuntoA[] = {1, 2, 3, 8};
-  int conjuntoA[ELEMENTOS_A];
-  // char conjuntoB[] = {'a' ,'b', 'j', 'k'};
-  char conjuntoB[ELEMENTOS_B];
-  // struct relacion rel[]= {{1,'b'}, {8, 'k'}};
-  struct relacion rel[ELEMENTOS_RELACION];
-  int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
-  char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
+  int conjuntoA[] = {1, 2, 3, 8};
+  // int conjuntoA[ELEMENTOS_A];
+  char conjuntoB[] = {'a' ,'b', 'j', 'k'};
+  // char conjuntoB[ELEMENTOS_B];
+  struct relacion rel[]= {{1,'b'}, {8, 'k'}};
+  // struct relacion rel[ELEMENTOS_RELACION];
+  // int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
+  // char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
+
+  if(estaEnDominio(conjuntoA[3], rel, conjuntoB))
+  // if(estaEnLaRelacionX(conjuntoA[0], rel) != -1)
+    printf("%s\n", "Esta en dominio");
+  else
+    printf("%s\n", "No esta en dominio");
+  // printf("Ingrese %d elementos del conjunto A\n", ELEMENTOS_A);
+  // ingresoConjuntoA(conjuntoA);
+  // fflush(stdin);
+  //
+  //
+  // printf("Ingrese %d elementos del conjunto B\n", ELEMENTOS_B);
+  // ingresoConjuntoB(conjuntoB);
+  //
+  //
+  // printf("ingrese %d elementos de la relacion", ELEMENTOS_RELACION);
+  // ingresoRelacion(rel);
 
 
-  printf("Ingrese %d elementos del conjunto A\n", ELEMENTOS_A);
-  ingresoConjuntoA(conjuntoA);
-  fflush(stdin);
-
-
-  printf("Ingrese %d elementos del conjunto B\n", ELEMENTOS_B);
-  ingresoConjuntoB(conjuntoB);
-
-
-  printf("ingrese %d elementos de la relacion", ELEMENTOS_RELACION);
-  ingresoRelacion(rel);
-
-
-  buscarDominio(rel, conjuntoA, dominio);
-  buscarImagen(rel, conjuntoB, imagen);
-
-  imprimirDominio(dominio);
-  imprimirImagen(imagen);
 
 
   fflush(stdin);
