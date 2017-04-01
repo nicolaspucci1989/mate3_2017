@@ -66,11 +66,11 @@ void ingresoRelacion(struct relacion rel[])
 }
 
 
-int perteneceAlaImagen()
+int perteneceAlaImagen(char elementoY, struct relacion rel[], int conjuntoA[])
 {
   /* si el elemento esta en el conjunto B
   y el elemento x con el que esta relacionado pertenece a A */
-  if((i = perteneceArelacionY()) && pertenceceAconjuntoA())
+  if((i = perteneceArelacionY(elementoY, rel)) && pertenceceAconjuntoA(rel[i].x, conjuntoA))
     res = 1;
   else
     res = 0;
@@ -78,24 +78,28 @@ int perteneceAlaImagen()
   return res;
 }
 
-int perteneceArelacionY()
+int perteneceArelacionY(char elementoY, struct relacion rel[])
 {
+  int i;
   int res = -1;
   for (size_t i = 0; i < ELEMENTOS_B; i++) {
-    if (elementoY == relacion[i].y) {
+    if (elementoY == rel[i].y) {
       res = i;
+      break;
     }
   }
 
   return res;
 }
 
-int pertenceceAconjuntoA()
+int pertenceceAconjuntoA(int elementoX, int conjuntoA[])
 {
+  int i;
   int res = 0;
   for (size_t i = 0; i < ELEMENTOS_A; i++) {
     if(elementoX == conjuntoA[i])
       res = 1;
+      break;
   }
   return res;
 }
