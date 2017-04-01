@@ -78,6 +78,7 @@ int perteneceAlaImagen(char elementoY, struct relacion rel[], int conjuntoA[])
   return res;
 }
 
+
 int perteneceArelacionY(char elementoY, struct relacion rel[])
 {
   int i;
@@ -92,6 +93,7 @@ int perteneceArelacionY(char elementoY, struct relacion rel[])
   return res;
 }
 
+
 int pertenceceAconjuntoA(int elementoX, int conjuntoA[])
 {
   int i;
@@ -103,6 +105,7 @@ int pertenceceAconjuntoA(int elementoX, int conjuntoA[])
   }
   return res;
 }
+
 
 int main(){
   // int conjuntoA[] = {1, 2, 3, 8};
