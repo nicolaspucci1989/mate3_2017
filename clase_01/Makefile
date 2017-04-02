@@ -11,4 +11,4 @@ funciones.o: funciones.c header.h
 	$(CC) $(CFLAGS) -c funciones.c
 
 clean:
-	rm *.exe
+	rm *.exe *.o
