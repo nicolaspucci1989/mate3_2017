@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall
 
-clase1: dominio_de_relacion.o funciones.o
-	$(CC) $(CFLAGS) -o clase1 dominio_de_relacion.o funciones.o
+clase01: main.o funciones.o
+	$(CC) $(CFLAGS) -o clase01 main.o funciones.o
 
-dominio_de_relacion.o: dominio_de_relacion.c header.h
-	$(CC) $(CFLAGS) -c dominio_de_relacion.c
+main.o: main.c header.h
+	$(CC) $(CFLAGS) -c main.c
 
 funciones.o: funciones.c header.h
 	$(CC) $(CFLAGS) -c funciones.c
