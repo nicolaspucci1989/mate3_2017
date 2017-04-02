@@ -14,6 +14,9 @@ struct relacion {
 int estaEnLaRelacionX(int elementoX, struct relacion rel[]);
 int estaEnB(char n, char conjuntoB[]);
 int estaEnDominio(int n, struct relacion rel[], char conjuntoB[]);
+int estaEnImagen(char n, struct relacion rel[], int conjuntoA[]);
+int estaEnA(int n, int conjuntoA[]);
+int estaEnLaRelacionY(char elementoY, struct relacion rel[]);
 void imprimirDominio(int v[]);
 void imprimirImagen(char v[]);
 void ingresoConjuntoA(int conjuntoA[]);

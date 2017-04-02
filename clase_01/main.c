@@ -12,7 +12,7 @@ int main(){
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   // struct relacion rel[ELEMENTOS_RELACION];
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
-  // char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
+  char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
   for(i=0, j=0; i<ELEMENTOS_A; i++){
     if(estaEnDominio(conjuntoA[i], rel, conjuntoB)){
@@ -21,7 +21,15 @@ int main(){
     }
   }
 
+  for(i=0, j=0; i<ELEMENTOS_A; i++){
+    if(estaEnImagen(conjuntoB[i], rel, conjuntoA)){
+      imagen[j] = conjuntoB[i];
+      j++;
+    }
+  }
+
   imprimirDominio(dominio);
+  imprimirImagen(imagen);
 
 
   fflush(stdin);

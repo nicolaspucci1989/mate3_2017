@@ -15,6 +15,19 @@ int estaEnLaRelacionX(int elementoX, struct relacion rel[])
   return res;
 }
 
+int estaEnLaRelacionY(char elementoY, struct relacion rel[])
+{
+  int i;
+  int res = -1;
+  for(i=0; i<ELEMENTOS_RELACION; i++){
+    if(elementoY == rel[i].y){
+      res = i;
+      break;
+    }
+  }
+  return res;
+}
+
 int estaEnB(char n, char conjuntoB[])
 {
   int i;
@@ -28,11 +41,31 @@ int estaEnB(char n, char conjuntoB[])
   return res;
 }
 
+int estaEnA(int n, int conjuntoA[])
+{
+  int i;
+  int res = 0;
+  for(i=0; i<ELEMENTOS_A; i++){
+    if(n == conjuntoA[i]){
+      res = 1;
+      break;
+    }
+  }
+  return res;
+}
 
 int estaEnDominio(int n, struct relacion rel[], char conjuntoB[])
 {
   int i=0;
   if((i = estaEnLaRelacionX(n, rel) != -1) && estaEnB(rel[i].y, conjuntoB))
+    i = 1;
+  return i;
+}
+
+int estaEnImagen(char n, struct relacion rel[], int conjuntoA[])
+{
+  int i=0;
+  if((i = estaEnLaRelacionY(n, rel) != -1) && estaEnA(rel[i].x, conjuntoA))
     i = 1;
   return i;
 }
@@ -50,7 +83,6 @@ void imprimirDominio(int v[])
   return;
 }
 
-
 void imprimirImagen(char v[])
 {
   int i=0;
@@ -64,7 +96,6 @@ void imprimirImagen(char v[])
   return;
 }
 
-
 void ingresoConjuntoA(int conjuntoA[])
 {
   int i;
@@ -74,7 +105,6 @@ void ingresoConjuntoA(int conjuntoA[])
 
   return;
 }
-
 
 void ingresoConjuntoB(char conjuntoB[])
 {
@@ -86,7 +116,6 @@ void ingresoConjuntoB(char conjuntoB[])
 
   return;
 }
-
 
 void ingresoRelacion(struct relacion rel[])
 {
