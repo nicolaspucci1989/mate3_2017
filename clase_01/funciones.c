@@ -46,6 +46,8 @@ void imprimirDominio(int v[])
     i++;
   }
   putchar('\n');
+
+  return;
 }
 
 
@@ -58,7 +60,10 @@ void imprimirImagen(char v[])
     i++;
   }
   putchar('\n');
+
+  return;
 }
+
 
 void ingresoConjuntoA(int conjuntoA[])
 {
@@ -66,6 +71,8 @@ void ingresoConjuntoA(int conjuntoA[])
   for(i=0; i<ELEMENTOS_A; i++){
     scanf("%d", &conjuntoA[i]);
   }
+
+  return;
 }
 
 
@@ -76,6 +83,8 @@ void ingresoConjuntoB(char conjuntoB[])
     scanf("%c", &conjuntoB[i]);
     fflush(stdin);
   }
+
+  return;
 }
 
 
@@ -89,4 +98,6 @@ void ingresoRelacion(struct relacion rel[])
     scanf("%c", &rel[i].y);
     fflush(stdin);
   }
+
+  return;
 }
