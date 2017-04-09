@@ -4,6 +4,8 @@
 
 
 int main(){
+
+
   int i, j;
   int conjuntoA[] = {1, 2, 3, 8};
   // int conjuntoA[ELEMENTOS_A];
@@ -14,12 +16,14 @@ int main(){
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
   char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
+
   for(i=0, j=0; i<ELEMENTOS_A; i++){
     if(estaEnDominio(conjuntoA[i], rel, conjuntoB)){
       dominio[j] = conjuntoA[i];
       j++;
     }
   }
+
 
   for(i=0, j=0; i<ELEMENTOS_A; i++){
     if(estaEnImagen(conjuntoB[i], rel, conjuntoA)){
@@ -28,6 +32,7 @@ int main(){
     }
   }
 
+
   imprimirDominio(dominio);
   imprimirImagen(imagen);
 
@@ -35,5 +40,7 @@ int main(){
   fflush(stdin);
   puts("Presione enter para continuar");
   getchar();
+
+
   return 0;
 }
