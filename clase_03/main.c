@@ -8,10 +8,9 @@ int main()
   int i;
   int divisor = 1;
   char *cartel[] = {"Es primo", "No es primo"};
-  int numero = 98;
+  int numero = 67;
 
-  numero = (int) sqrt(numero);
-  numero --;
+  numero = ((int) sqrt(numero)) - 1;
 
   for(i=2; i<numero; i++){
     if(numero%i == 0){
