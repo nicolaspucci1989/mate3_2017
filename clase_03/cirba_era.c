@@ -3,24 +3,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define FILAS 10
-#define COLUMNS 10
+#define COLUMNAS 10
+#define TACHADO -1
 
+int tomarNumeroNoTachado(matriz[][COLUMNAS])
+{
+  int i,j,res;
+  
+  for(i=0; i<FILAS; i++){
+    for(j=0; j<COLUMNAS; j++){
+      if(matriz[i][j] == 0){
+        res = matriz[i][j];
+        matriz[i][j] = TACHADO;
+        i=FILAS;break;
+      }
+    }
+  }
+
+  return res;
+}
 
 int main()
 {
-  int i,j,k=1;
-  int matriz[FILAS][COLUMNS];
+  int i,j,k=2;
+  int matriz[FILAS][COLUMNAS];
 
 
   for(i=0; i<FILAS; i++){
-    for(j=0; j<COLUMNS; j++){
+    for(j=0; j<COLUMNAS; j++){
       matriz[i][j] = k;
       k++;
     }
   }
 
   for(i=0; i<FILAS; i++){
-    for(j=0; j<COLUMNS; j++){
+    for(j=0; j<COLUMNAS; j++){
       printf("%d ", matriz[i][j]);
     }
     putchar('\n');
