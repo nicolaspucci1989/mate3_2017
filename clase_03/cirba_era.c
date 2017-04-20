@@ -6,13 +6,13 @@
 #define COLUMNAS 10
 #define TACHADO -1
 
-int tomarNumeroNoTachado(matriz[][COLUMNAS])
+int tomarNumeroNoTachado(int matriz[][COLUMNAS])
 {
   int i,j,res;
-  
+
   for(i=0; i<FILAS; i++){
     for(j=0; j<COLUMNAS; j++){
-      if(matriz[i][j] == 0){
+      if(matriz[i][j] != TACHADO){
         res = matriz[i][j];
         matriz[i][j] = TACHADO;
         i=FILAS;break;
@@ -36,14 +36,7 @@ int main()
     }
   }
 
-  for(i=0; i<FILAS; i++){
-    for(j=0; j<COLUMNAS; j++){
-      printf("%d ", matriz[i][j]);
-    }
-    putchar('\n');
-  }
-
-
+  printf("%d\n", tomarNumeroNoTachado(matriz));
   puts("Presione enter para continuar");
   getchar();
   return 0;
