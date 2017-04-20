@@ -23,6 +23,18 @@ int tomarNumeroNoTachado(int matriz[][COLUMNAS])
   return res;
 }
 
+
+void tacharMultiplos(int primo, int matriz[][COLUMNAS])
+{
+  for(i=0; i<FILAS; i++){
+    for(j=0; j<COLUMNAS; j++){
+      if(matriz[i][j]%primo == 0)
+        matriz[i][j] == TACHADO;
+    }
+  }
+}
+
+
 int main()
 {
   int i,j,k=2;
