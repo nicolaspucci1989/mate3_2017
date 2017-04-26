@@ -6,7 +6,7 @@
 int main(){
 
 
-  int i, j;
+  int i, j, k, h ,n=4;
   int conjuntoA[] = {1, 2, 3, 8};
   // int conjuntoA[ELEMENTOS_A];
   char conjuntoB[] = {'a' ,'b', 'j', 'k'};
@@ -14,33 +14,16 @@ int main(){
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   // struct relacion rel[ELEMENTOS_RELACION];
   int dominio[ELEMENTOS_A] = {-1, -1, -1, -1};
-  char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
+  // char imagen[ELEMENTOS_B] = {-1, -1, -1, -1};
 
-
-  for(i=0, j=0; i<ELEMENTOS_A; i++){
-    if(estaEnDominio(conjuntoA[i], rel, conjuntoB)){
-      dominio[j] = conjuntoA[i];
-      j++;
-    }
-  }
-
-
-  for(i=0, j=0; i<ELEMENTOS_A; i++){
-    if(estaEnImagen(conjuntoB[i], rel, conjuntoA)){
-      imagen[j] = conjuntoB[i];
-      j++;
-    }
-  }
-
-
+  for(i=0,h=0;i<n;i++)
+    for(j=0;j<n;j++)
+      if(conjuntoA[i]==rel[j].x)
+        for(k=0;k<n;k++)
+          if(conjuntoB[k]==rel[j].y){
+            dominio[h]=conjuntoA[i];
+            h++;
+          }
   imprimirDominio(dominio);
-  imprimirImagen(imagen);
-
-
-  fflush(stdin);
-  puts("Presione enter para continuar");
-  getchar();
-
-
   return 0;
 }
