@@ -33,6 +33,21 @@ void obtenerImagen(int n, char imagen[], char conjuntoB[],
 }
 
 
+void inicializarDominio(int v[], int n){
+  int i;
+  for(i=0;i<n;i++)
+    v[i]=-1;
+}
+
+
+void inicializarImagen(char v[], int n)
+{
+  int i;
+  for(i=0;i<n;i++)
+    v[i]=-1;
+}
+
+
 int main(){
 
 
@@ -43,13 +58,16 @@ int main(){
   // char conjuntoB[ELEMENTOS_B];
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
   // struct relacion rel[ELEMENTOS_RELACION];
-  int dominio[] = {-1, -1, -1, -1};
-  char imagen[] = {-1, -1, -1, -1};
+  int dominio[n];
+  char imagen[n];
+
+  inicializarDominio(dominio,n);
+  inicializarImagen(imagen,n);
 
   obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
   imprimirDominio(dominio);
   obtenerImagen(n,imagen,conjuntoB,conjuntoA,rel);
   imprimirImagen(imagen);
-  
+
   return 0;
 }
