@@ -133,9 +133,6 @@ int main(){
 
 
   int n = 10;
-  // int conjuntoA[] = {1, 2, 3, 8};
-  // char conjuntoB[] = {'a' ,'b', 'j', 'k', -1, -1};
-  // struct relacion rel[]= {{1,'b'}, {8, 'k'}, {-1,-1}};
   int conjuntoA[n];
   char conjuntoB[n];
   struct relacion rel[n];
