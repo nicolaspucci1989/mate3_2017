@@ -135,12 +135,12 @@ void imprimirDominio(int n, int v[])
 
 int esRefelxiva(int n, int rel[][COLUMNAS])
 {
-  int reflexiva=1;
+  int reflexiva=0;
   int i;
 
   for(i=0;i<n;i++){
     if(rel[i][i]==0){
-      reflexiva=0;
+      reflexiva=1;
       break;
     }
   }
@@ -167,7 +167,7 @@ int antisimetrica(int n, int rela[][COLUMNAS])
 int main(){
 
 
-  char *cartel[] = {"no reflex", "reflex"};
+  char *cartel[] = {"reflex", "no reflex"};
   char *cartel2[] = {"anti", "no anti"};
   int n = 10;
   int conjuntoA[n];
