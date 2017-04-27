@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TAMANIO(x) ((sizeof x) / (sizeof *x))
 
 struct relacion {
   int x;
