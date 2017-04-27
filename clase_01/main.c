@@ -23,7 +23,7 @@ void obtenerImagen(int n, char imagen[], int conjuntoA[],
   int i,h,j,k;
 
   for(i=0,h=0;i<n;i++)
-    for(j=0;j<n;j++)
+    for(j=0;j<n && rel[j].x!=-1;j++)
       if(conjuntoB[i]==rel[j].y)
         for(k=0;k<n;k++)
           if(conjuntoA[k]==rel[j].x){
@@ -117,15 +117,13 @@ int main(){
 
   int n=4;
   int conjuntoA[] = {1, 2, 3, 8};
-  // int conjuntoA[ELEMENTOS_A];
   char conjuntoB[] = {'a' ,'b', 'j', 'k'};
-  // char conjuntoB[ELEMENTOS_B];
   struct relacion rel[]= {{1,'b'}, {8, 'k'}};
-  // struct relacion rel[ELEMENTOS_RELACION];
   int dominio[n];
   char imagen[n];
 
   inicializarImagen(n,imagen);
+  inicializarDominio(n,dominio);
   obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
   imprimirImagen(n,imagen);
 
