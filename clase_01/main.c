@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "header.h"
 #define TAMANIO(x) ((sizeof x) / (sizeof *x))
+
+struct relacion {
+  int x;
+  char y;
+};
 
 void obtenerDominio(int n, int dominio[], int conjuntoA[],
                   char conjuntoB[], struct relacion rel[])
