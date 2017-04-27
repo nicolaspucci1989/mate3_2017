@@ -65,7 +65,7 @@ void ingresoConjuntoA(int n, int conjuntoA[])
 {
   int i=0,aux=1;
 
-  printf("Ingrese conjunto A\n");
+  printf("Ingrese conjunto A, fin con -1.\n");
   while(i<n && aux!=-1){
     printf("$ ");
     scanf("%d", &aux);
@@ -81,7 +81,7 @@ void ingresoConjuntoB(int n, char conjuntoB[])
   int i=0;
   char aux=1;
 
-  printf("Ingrese conjunto B\n");
+  printf("Ingrese conjunto B, fin con Z.\n");
   while(i<n && aux!='Z'){
     printf("$ ");
     scanf("%c", &aux);
