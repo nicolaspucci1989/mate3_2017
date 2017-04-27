@@ -164,11 +164,28 @@ int antisimetrica(int n, int rela[][COLUMNAS])
 }
 
 
+int transitiva(int n, int m[][COLUMNAS])
+{
+  int transi=0;
+  int i,j,k;
+
+  for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+      if(m[i][j])
+        for(k=0;k<n;k++)
+          if(m[j][k]==1 && m[i][k]!=1)
+            transi=1;
+
+  return transi;
+}
+
+
 int main(){
 
 
   char *cartel[] = {"reflex", "no reflex"};
   char *cartel2[] = {"anti", "no anti"};
+  char *cartel3[] = {"transitiva", "no transitiva"};
   int n = 10;
   int conjuntoA[n];
   char conjuntoB[n];
@@ -176,8 +193,8 @@ int main(){
   int dominio[n];
   char imagen[n];
   int rela[3][3]={{1,0,1},
-                {0,1,0},
-                {1,0,1}};
+                  {0,1,0},
+                  {0,1,1}};
   //
   // inicalizarRelacion(n, rel);
   // inicializarImagen(n,imagen);
@@ -199,6 +216,7 @@ int main(){
 
   printf("%s\n", cartel[esRefelxiva(3,rela)]);
   printf("%s\n", cartel2[antisimetrica(3,rela)]);
+  printf("%s\n", cartel3[transitiva(3,rela)]);
   fflush(stdin);
   putchar('\n');
   puts("Presione enter.");
