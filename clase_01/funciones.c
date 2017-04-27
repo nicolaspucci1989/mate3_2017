@@ -69,29 +69,3 @@ int estaEnImagen(char n, struct relacion rel[], int conjuntoA[])
     i = 1;
   return i;
 }
-
-void imprimirDominio(int v[])
-{
-  int i=0;
-  printf("Dominio: ");
-  while(v[i] != -1){
-    printf("%d ", v[i]);
-    i++;
-  }
-  putchar('\n');
-
-  return;
-}
-
-void imprimirImagen(char v[])
-{
-  int i=0;
-  printf("Imagen: ");
-  while(v[i] != -1){
-    printf("%c ", v[i]);
-    i++;
-  }
-  putchar('\n');
-
-  return;
-}
