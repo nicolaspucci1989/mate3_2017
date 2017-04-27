@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define COLUMNAS 3
 
 struct relacion {
   int x;
@@ -132,33 +133,72 @@ void imprimirDominio(int n, int v[])
   putchar('\n');
 }
 
+int esRefelxiva(int n, int rel[][COLUMNAS])
+{
+  int reflexiva=1;
+  int i;
+
+  for(i=0;i<n;i++){
+    if(rel[i][i]==0){
+      reflexiva=0;
+      break;
+    }
+  }
+
+  return reflexiva;
+}
+
+int antisimetrica(int n, int rela[][COLUMNAS])
+{
+  int i,j;
+  int anti=0;
+  for(i=0;i<n;i++){
+    for(j=i+1;j<n;j++){
+      if(rela[i][j]==1 && rela[j][i]==1){
+        anti=1;
+        i=n;break;
+      }
+    }
+  }
+  return anti;
+}
+
+
 int main(){
 
 
+  char *cartel[] = {"no reflex", "reflex"};
+  char *cartel2[] = {"anti", "no anti"};
   int n = 10;
   int conjuntoA[n];
   char conjuntoB[n];
   struct relacion rel[n];
   int dominio[n];
   char imagen[n];
+  int rela[3][3]={{1,0,1},
+                {0,1,0},
+                {1,0,1}};
+  //
+  // inicalizarRelacion(n, rel);
+  // inicializarImagen(n,imagen);
+  // inicializarDominio(n,dominio);
+  //
+  //
+  // ingresoConjuntoA(n,conjuntoA);
+  // fflush(stdin);
+  // ingresoConjuntoB(n,conjuntoB);
+  // ingresoRelacion(n,rel);
+  //
+  //
+  // obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
+  // obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
+  //
+  // imprimirDominio(n,dominio);
+  // imprimirImagen(n,imagen);
 
-  inicalizarRelacion(n, rel);
-  inicializarImagen(n,imagen);
-  inicializarDominio(n,dominio);
 
-
-  ingresoConjuntoA(n,conjuntoA);
-  fflush(stdin);
-  ingresoConjuntoB(n,conjuntoB);
-  ingresoRelacion(n,rel);
-
-
-  obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
-  obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
-
-  imprimirDominio(n,dominio);
-  imprimirImagen(n,imagen);
-
+  printf("%s\n", cartel[esRefelxiva(3,rela)]);
+  printf("%s\n", cartel2[antisimetrica(3,rela)]);
   fflush(stdin);
   putchar('\n');
   puts("Presione enter.");
