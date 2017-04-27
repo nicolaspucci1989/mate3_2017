@@ -96,26 +96,6 @@ void imprimirImagen(char v[])
   return;
 }
 
-void ingresoConjuntoA(int conjuntoA[])
-{
-  int i;
-  for(i=0; i<ELEMENTOS_A; i++){
-    scanf("%d", &conjuntoA[i]);
-  }
-
-  return;
-}
-
-void ingresoConjuntoB(char conjuntoB[])
-{
-  int i;
-  for(i=0; i<ELEMENTOS_B; i++){
-    scanf("%c", &conjuntoB[i]);
-    fflush(stdin);
-  }
-
-  return;
-}
 
 void ingresoRelacion(struct relacion rel[])
 {

@@ -48,9 +48,34 @@ void inicializarImagen(char v[], int n)
 }
 
 
+void ingresoConjuntoA(int n, int conjuntoA[])
+{
+  int i;
+
+  printf("Ingrese conjunto A\n");
+  for(i=0;i<n;i++){
+    printf("$ ");
+    scanf("%d", &conjuntoA[i]);
+  }
+}
+
+
+void ingresoConjunoB(int n, char conjuntoB[])
+{
+  int i;
+
+  printf("Ingrese conjunto B\n");
+  for(i=0;i<n;i++){
+    printf("$ ");
+    scanf("%c", &conjuntoB[i]);
+    fflush(stdin);
+  }
+}
+
 int main(){
 
 
+  int i;
   int n=4;
   int conjuntoA[] = {1, 2, 3, 8};
   // int conjuntoA[ELEMENTOS_A];
@@ -61,13 +86,13 @@ int main(){
   int dominio[n];
   char imagen[n];
 
-  inicializarDominio(dominio,n);
-  inicializarImagen(imagen,n);
+  ingresoConjunoB(n,conjuntoB);
+  for(i=0;i<n;i++)
+    printf("%c ", conjuntoB[i]);
 
-  obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
-  imprimirDominio(dominio);
-  obtenerImagen(n,imagen,conjuntoB,conjuntoA,rel);
-  imprimirImagen(imagen);
-
+  fflush(stdin);
+  putchar('\n');
+  puts("Presione enter.");
+  getchar();
   return 0;
 }
