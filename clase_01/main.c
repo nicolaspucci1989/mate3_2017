@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "header.h"
+#define TAMANIO(x) ((sizeof x) / (sizeof *x))
 
 void obtenerDominio(int n, int dominio[], int conjuntoA[],
                   char conjuntoB[], struct relacion rel[])
 {
   int i,h,j,k;
-  for(i=0,h=0;i<n;i++)
-    for(j=0;j<n;j++)
+  for(i=0,h=0;i<n && conjuntoA[i]!=-1;i++)
+    for(j=0;j<n && rel[j].x!=-1;j++)
       if(conjuntoA[i]==rel[j].x)
         for(k=0;k<n;k++)
           if(conjuntoB[k]==rel[j].y){
@@ -22,7 +23,7 @@ void obtenerImagen(int n, char imagen[], int conjuntoA[],
 {
   int i,h,j,k;
 
-  for(i=0,h=0;i<n;i++)
+  for(i=0,h=0;i<n && conjuntoB[i]!=-1;i++)
     for(j=0;j<n && rel[j].x!=-1;j++)
       if(conjuntoB[i]==rel[j].y)
         for(k=0;k<n;k++)
@@ -48,26 +49,40 @@ void inicializarImagen(int n, char v[])
 }
 
 
-void ingresoConjuntoA(int n, int conjuntoA[])
+void inicalizarRelacion(int n, struct relacion rel[])
 {
   int i;
-
-  printf("Ingrese conjunto A\n");
-  for(i=0;i<n;i++){
-    printf("$ ");
-    scanf("%d", &conjuntoA[i]);
-  }
+  for(i=0;i<n;i++)
+    rel[i].x = rel[i].y = -1;
 }
 
 
-void ingresoConjunoB(int n, char conjuntoB[])
+void ingresoConjuntoA(int n, int conjuntoA[])
 {
-  int i;
+  int i=0,aux=1;
+
+  printf("Ingrese conjunto A\n");
+  while(i<n && aux!=-1){
+    printf("$ ");
+    scanf("%d", &aux);
+    conjuntoA[i]=aux;
+    i++;
+  }
+
+}
+
+
+void ingresoConjuntoB(int n, char conjuntoB[])
+{
+  int i=0;
+  char aux=1;
 
   printf("Ingrese conjunto B\n");
-  for(i=0;i<n;i++){
+  while(i<n && aux!='Z'){
     printf("$ ");
-    scanf("%c", &conjuntoB[i]);
+    scanf("%c", &aux);
+    conjuntoB[i]=aux;
+    i++;
     fflush(stdin);
   }
 }
@@ -75,16 +90,18 @@ void ingresoConjunoB(int n, char conjuntoB[])
 
 void ingresoRelacion(int n, struct relacion rel[])
 {
-  int i;
-
+  int i=0;
   printf("Ingrese la relacion\n");
-  for(i=0;i<n;i++){
-    printf("Ingrese elemento x\n$");
-    scanf("%d", &rel[i].x);
+  printf("Ingrese elemento x\n$");
+  scanf("%d", &rel[i].x);
+  while(i<n && rel[i].x!=-1){
     fflush(stdin);
     printf("Ingrese elemento y\n$");
     scanf("%c", &rel[i].y);
     fflush(stdin);
+    i++;
+    printf("Ingrese elemento x\n$");
+    scanf("%d", &rel[i].x);
   }
 }
 
@@ -115,16 +132,31 @@ void imprimirDominio(int n, int v[])
 int main(){
 
 
-  int n=4;
-  int conjuntoA[] = {1, 2, 3, 8};
-  char conjuntoB[] = {'a' ,'b', 'j', 'k'};
-  struct relacion rel[]= {{1,'b'}, {8, 'k'}};
+  int n = 10;
+  // int conjuntoA[] = {1, 2, 3, 8};
+  // char conjuntoB[] = {'a' ,'b', 'j', 'k', -1, -1};
+  // struct relacion rel[]= {{1,'b'}, {8, 'k'}, {-1,-1}};
+  int conjuntoA[n];
+  char conjuntoB[n];
+  struct relacion rel[n];
   int dominio[n];
   char imagen[n];
 
+  inicalizarRelacion(n, rel);
   inicializarImagen(n,imagen);
   inicializarDominio(n,dominio);
+
+
+  ingresoConjuntoA(n,conjuntoA);
+  fflush(stdin);
+  ingresoConjuntoB(n,conjuntoB);
+  ingresoRelacion(n,rel);
+
+
+  obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
   obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
+
+  imprimirDominio(n,dominio);
   imprimirImagen(n,imagen);
 
   fflush(stdin);

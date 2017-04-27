@@ -1,7 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#define TAMVECTOR(x) ((sizeof x) / (sizeof *x))
 #define ELEMENTOS_A 4
 #define ELEMENTOS_B 4
 #define ELEMENTOS_RELACION 2
