@@ -72,6 +72,23 @@ void ingresoConjunoB(int n, char conjuntoB[])
   }
 }
 
+
+void ingresoRelacion(int n, struct relacion rel[])
+{
+  int i;
+
+  printf("Ingrese la relacion\n");
+  for(i=0;i<n;i++){
+    printf("Ingrese elemento x\n$");
+    scanf("%d", &rel[i].x);
+    fflush(stdin);
+    printf("Ingrese elemento y\n$");
+    scanf("%c", &rel[i].y);
+    fflush(stdin);
+  }
+}
+
+
 int main(){
 
 
@@ -86,9 +103,12 @@ int main(){
   int dominio[n];
   char imagen[n];
 
-  ingresoConjunoB(n,conjuntoB);
-  for(i=0;i<n;i++)
-    printf("%c ", conjuntoB[i]);
+  n=2;
+  ingresoRelacion(n,rel);
+  for(i=0;i<n;i++){
+    printf("%d %c\n", rel[i].x, rel[i].y);
+  }
+
 
   fflush(stdin);
   putchar('\n');

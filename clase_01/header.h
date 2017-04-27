@@ -19,5 +19,4 @@ int estaEnA(int n, int conjuntoA[]);
 int estaEnLaRelacionY(char elementoY, struct relacion rel[]);
 void imprimirDominio(int v[]);
 void imprimirImagen(char v[]);
-void ingresoRelacion(struct relacion rel[]);
 #endif

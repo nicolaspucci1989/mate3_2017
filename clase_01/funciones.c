@@ -95,18 +95,3 @@ void imprimirImagen(char v[])
 
   return;
 }
-
-
-void ingresoRelacion(struct relacion rel[])
-{
-  int i;
-  for(i=0; i<ELEMENTOS_RELACION; i++)
-  {
-    scanf("%d", &rel[i].x);
-    fflush(stdin);
-    scanf("%c", &rel[i].y);
-    fflush(stdin);
-  }
-
-  return;
-}
