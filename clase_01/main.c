@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define COLUMNAS 3
 
 struct relacion {
   int x;
@@ -133,90 +132,34 @@ void imprimirDominio(int n, int v[])
   putchar('\n');
 }
 
-int esRefelxiva(int n, int rel[][COLUMNAS])
-{
-  int reflexiva=0;
-  int i;
-
-  for(i=0;i<n;i++){
-    if(rel[i][i]==0){
-      reflexiva=1;
-      break;
-    }
-  }
-
-  return reflexiva;
-}
-
-int antisimetrica(int n, int rela[][COLUMNAS])
-{
-  int i,j;
-  int anti=0;
-  for(i=0;i<n;i++){
-    for(j=i+1;j<n;j++){
-      if(rela[i][j]==1 && rela[j][i]==1){
-        anti=1;
-        i=n;break;
-      }
-    }
-  }
-  return anti;
-}
-
-
-int transitiva(int n, int m[][COLUMNAS])
-{
-  int transi=0;
-  int i,j,k;
-
-  for(i=0;i<n;i++)
-    for(j=0;j<n;j++)
-      if(m[i][j])
-        for(k=0;k<n;k++)
-          if(m[j][k]==1 && m[i][k]!=1)
-            transi=1;
-
-  return transi;
-}
-
-
 int main(){
 
 
-  char *reflex[] = {"reflex", "no reflex"};
-  char *antisime[] = {"anti", "no anti"};
-  char *transi[] = {"transitiva", "no transitiva"};
   int n = 10;
   int conjuntoA[n];
   char conjuntoB[n];
   struct relacion rel[n];
   int dominio[n];
   char imagen[n];
-  int rela[3][3]={{1,1,1},
-                  {0,1,0},
-                  {0,1,1}};
-  //
-  // inicalizarRelacion(n, rel);
-  // inicializarImagen(n,imagen);
-  // inicializarDominio(n,dominio);
-  //
-  //
-  // ingresoConjuntoA(n,conjuntoA);
-  // fflush(stdin);
-  // ingresoConjuntoB(n,conjuntoB);
-  // ingresoRelacion(n,rel);
-  //
-  //
-  // obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
-  // obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
-  //
-  // imprimirDominio(n,dominio);
-  // imprimirImagen(n,imagen);
+
+  inicalizarRelacion(n, rel);
+  inicializarImagen(n,imagen);
+  inicializarDominio(n,dominio);
 
 
-  printf("%s\n", reflex[esRefelxiva(3,rela)]);
-  printf("%s\n", antisime[antisimetrica(3,rela)]);
-  printf("%s\n", transi[transitiva(3,rela)]);
+  ingresoConjuntoA(n,conjuntoA);
+  fflush(stdin);
+  ingresoConjuntoB(n,conjuntoB);
+  ingresoRelacion(n,rel);
+
+
+  obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
+  obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
+
+  imprimirDominio(n,dominio);
+  imprimirImagen(n,imagen);
+
+
   fflush(stdin);
   putchar('\n');
   puts("Presione enter.");
