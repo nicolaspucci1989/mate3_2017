@@ -21,7 +21,7 @@ void obtenerDominio(int n, int dominio[], int conjuntoA[],
 }
 
 
-void obtenerImagen(int n, char imagen[], int conjuntoA[],
+void obtenerRango(int n, char rango[], int conjuntoA[],
                   char conjuntoB[], struct relacion rel[])
 {
   int i,h,j,k;
@@ -31,7 +31,7 @@ void obtenerImagen(int n, char imagen[], int conjuntoA[],
       if(conjuntoB[i]==rel[j].y)
         for(k=0;k<n;k++)
           if(conjuntoA[k]==rel[j].x){
-            imagen[h]=conjuntoB[i];
+            rango[h]=conjuntoB[i];
             h++;
           }
 }
@@ -44,7 +44,7 @@ void inicializarDominio(int n,int v[]){
 }
 
 
-void inicializarImagen(int n, char v[])
+void inicializarRango(int n, char v[])
 {
   int i;
   for(i=0;i<n;i++)
@@ -109,10 +109,10 @@ void ingresoRelacion(int n, struct relacion rel[])
 }
 
 
-void imprimirImagen(int n, char v[])
+void imprimirRango(int n, char v[])
 {
   int i=0;
-  printf("Imagen: ");
+  printf("Rango: ");
   while(v[i] != -1 && i<n){
     printf("%c ", v[i]);
     i++;
@@ -140,10 +140,10 @@ int main(){
   char conjuntoB[n];
   struct relacion rel[n];
   int dominio[n];
-  char imagen[n];
+  char rango[n];
 
   inicalizarRelacion(n, rel);
-  inicializarImagen(n,imagen);
+  inicializarRango(n,rango);
   inicializarDominio(n,dominio);
 
 
@@ -154,10 +154,10 @@ int main(){
 
 
   obtenerDominio(n,dominio,conjuntoA,conjuntoB,rel);
-  obtenerImagen(n,imagen,conjuntoA,conjuntoB,rel);
+  obtenerRango(n,rango,conjuntoA,conjuntoB,rel);
 
   imprimirDominio(n,dominio);
-  imprimirImagen(n,imagen);
+  imprimirRango(n,rango);
 
 
   fflush(stdin);
