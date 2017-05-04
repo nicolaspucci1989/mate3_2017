@@ -18,7 +18,7 @@ int main()
 
   for(i=0;i<anios;i++){
     inversion+=inversion*tasa;
-    printf("Anio %d: %.2f\n", i+1, inversion);
+    printf("Anio %d, Cantidad acumulada %-5.2f\n", i+1, inversion);
   }
 
   puts("Presione enter para continuar");
