@@ -1,45 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define PRIMO 1
-#define COMPUESTO 0
-
-
-
-void primos(int v[], int tam);
-
+// #define TAM(x) sizeof(x)/sizeof(x[0])
 
 int main()
 {
-    int i;
-    int n=10;
-    int v[n];
+  int f[]={1,1,2,3,5};
+  int p[]={2,3,5,7,11};
+  int s[10];
+  int i,j,k,a;
 
-    primos(v,n);
+  for(i=0;i<10;i++)
+    s[i]=-1;
 
-    for (i = 0; i < n; i++) {
-      printf("%d ", v[i]);
-    }
-    return 0;
-}
+  i=j=k=0;
 
-void primos(int salida[], int tam)
-{
-  int i,k,j,n=100;
-  int v[n];
-
-  for(i=0; i<n; i++){
-    v[i]=PRIMO;
-  }
-
-  v[0]=v[1]=COMPUESTO;
-  for(i=2; i*i<n; i++)
-    for(j=i*i; j<n; j+=i)
-      v[j]=COMPUESTO;
-
-  for(i=0, k=0; k<tam; i++){
-    if(v[i]==PRIMO){
-      salida[k]=i;
+  while(j<5 && i<5){
+    if(f[i]<=p[j]){
+      s[k]=f[i];
       k++;
+      i++;
+    } else {
+      s[k]=p[j];
+      k++;
+      j++;
     }
   }
+
+  a = (i>j)?j:i;
+
+
+  for(;a<5;a++, k++){
+    s[k]=p[a];
+  }
+
+
+  for(i=0;i<10;i++)
+    printf("%d ", s[i]);
+
+  return 0;
 }
