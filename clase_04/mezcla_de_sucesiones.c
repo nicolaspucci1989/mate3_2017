@@ -37,5 +37,9 @@ int main()
   for(i=0;i<10;i++)
     printf("%d ", s[i]);
 
+
+  printf("\n");
+  puts("Presone enter para continuar")
+  getchar();
   return 0;
 }
