@@ -1,31 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define FILAS 4
+#define COLUMNAS 4
+
+
+void inicializarMatriz(int matriz[FILAS][COLUMNAS], int valor, int tam)
+{
+	int i,j;
+  for(i=0;i<tam;i++)
+    for(j=0;j<tam;j++)
+      matriz[i][j]=valor;
+}
+
+
+void recorrerDiagonal(int matriz[FILAS][COLUMNAS],int n)
+{
+ 	int r=rand()%2;
+	int i;
+  for(i=0;i<n;i++)
+    matriz[i][i]=r;
+}
+
+
+void recorrerMitadSuperior(int matriz[FILAS][COLUMNAS], int n)
+{
+	int i,j,r;
+
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++){
+			r=rand()%2;
+			matriz[i][j]=r;
+			matriz[j][i]=r;
+		}
+}
+
 
 int main()
 {
-  srand(time(NULL));
-  int r=rand()%2;
-  int n=5;
+	srand(time(NULL));
+  int n=FILAS;
   int matriz[n][n];
   int i,j;
 
-	//Inicializa matriz en -1
-  for(i=0;i<n;i++)
-    for(j=0;j<n;j++)
-      matriz[i][j]=-1;
+	inicializarMatriz(matriz,-1,n);
 
-  for(i=0;i<n;i++)
-    matriz[i][i]=r;
+	recorrerDiagonal(matriz,n);
 
-  /*Recorre la mitad superior a la diagonal y
-	asigna el mismo numero al otro extremo*/
-  for(i=0;i<n;i++)
-    for(j=i+1;j<n;j++){
-      r=rand()%2;
-      matriz[i][j]=r;
-      matriz[j][i]=r;
-    }
+	recorrerMitadSuperior(matriz,n);
 
 
 	//Imprime matriz
