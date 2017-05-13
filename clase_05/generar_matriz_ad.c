@@ -36,12 +36,24 @@ void recorrerMitadSuperior(int matriz[FILAS][COLUMNAS], int n)
 }
 
 
+void imprimirMatriz(int matriz[FILAS][COLUMNAS], int n)
+{
+	int i,j;
+
+  for(i=0;i<n;i++){
+    for(j=0;j<n; j++)
+      printf("%d ", matriz[i][j]);
+    printf("\n");
+  }
+
+}
+
+
 int main()
 {
 	srand(time(NULL));
   int n=FILAS;
   int matriz[n][n];
-  int i,j;
 
 	inicializarMatriz(matriz,-1,n);
 
@@ -49,13 +61,7 @@ int main()
 
 	recorrerMitadSuperior(matriz,n);
 
-
-	//Imprime matriz
-  for(i=0;i<n;i++){
-    for(j=0;j<n; j++)
-      printf("%d ", matriz[i][j]);
-    printf("\n");
-  }
+	imprimirMatriz(matriz,n);
 
   return 0;
 }
