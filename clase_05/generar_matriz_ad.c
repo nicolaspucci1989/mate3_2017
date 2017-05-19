@@ -78,9 +78,11 @@ void gradoVertices(int matriz[FILAS][COLUMNAS], int n, int grados[])
 {
 	int i,j;
 	for(i=0;i<n;i++){
+		//Buscar unos en la fila
 		for(j=0;j<n;j++)
 			if(matriz[i][j])
 				grados[i]+=1;
+		//Si hau un uno en la diagonal vale doble
 		if(matriz[i][i])
 			grados[i]+=1;
 	}
