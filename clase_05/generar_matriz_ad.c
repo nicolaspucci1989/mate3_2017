@@ -74,12 +74,25 @@ int numeroDeLazos(int matriz[FILAS][COLUMNAS], int n)
 	return lazos;
 }
 
+void gradoVertices(int matriz[FILAS][COLUMNAS], int n, int grados[])
+{
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++)
+			if(matriz[i][j])
+				grados[i]+=1;
+		if(matriz[i][i])
+			grados[i]+=1;
+	}
+}
 
 int main()
 {
 	srand(time(NULL));
   int n=FILAS;
   int matriz[n][n];
+	int grados[]={0,0,0,0};
+	int i;
 
 	inicializarMatriz(matriz,-1,n);
 
@@ -87,10 +100,18 @@ int main()
 
 	recorrerMitadSuperior(matriz,n);
 
+	puts("Matriz:");
 	imprimirMatriz(matriz,n);
+	putchar('\n');
 
 	printf("Numero de lazos: %d\n", numeroDeLazos(matriz, n));
 	printf("Numero de aristas: %d\n", numeroDeAristas(matriz, n));
 
-  return 0;
+	gradoVertices(matriz,n,grados);
+
+	for(i=0;i<n;i++){
+		printf("Grado vertice %d: %d\n", i+1, grados[i]);
+	}
+
+	return 0;
 }
