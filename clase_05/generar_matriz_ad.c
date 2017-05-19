@@ -52,7 +52,7 @@ int numeroDeAristas(int matriz[FILAS][COLUMNAS], int n)
 {
 	int i,j,aristas=0;
 
-	//Buscar unos encima de la diagonal
+	//Buscar unos en y sobre de la diagonal
 	for(i=0;i<n;i++)
 		for(j=i;j<n;j++)
 			if(matriz[i][j]==1)
