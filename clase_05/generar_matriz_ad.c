@@ -48,16 +48,28 @@ void imprimirMatriz(int matriz[FILAS][COLUMNAS], int n)
 
 }
 
+int numeroDeAristas(int matriz[FILAS][COLUMNAS], int n)
+{
+	int i,j,aristas=0;
+
+	//Buscar unos encima de la diagonal
+	for(i=0;i<n;i++)
+		for(j=i;j<n;j++)
+			if(matriz[i][j]==1)
+				aristas++;
+
+	return aristas;
+}
+
 int numeroDeLazos(int matriz[FILAS][COLUMNAS], int n)
 {
 	int i;
 	int lazos = 0;
 
 	//Buscar unos en la diagonal
-	for(i=0;i<n;i++){
+	for(i=0;i<n;i++)
 		if(matriz[i][i]==1)
 			lazos++;
-	}
 
 	return lazos;
 }
@@ -78,6 +90,7 @@ int main()
 	imprimirMatriz(matriz,n);
 
 	printf("Numero de lazos: %d\n", numeroDeLazos(matriz, n));
+	printf("Numero de aristas: %d\n", numeroDeAristas(matriz, n));
 
   return 0;
 }
