@@ -38,7 +38,7 @@ void imprimirVertices(int colores[VERTICES])
 {
   int i;
 
-  printf("Vertices X.\n");
+  printf("Grafo bipartito\nVertices X.\n");
   for(i=0;i<VERTICES;i++)
     if(colores[i]==ROJO)
       printf("%d ",i);
@@ -57,7 +57,6 @@ int esBipartito(int grafo[][VERTICES], int colores[VERTICES], int fuente){
   int res = VERDADERO;
   struct FIFO cola;
   cola.primero = cola.ultimo = 0;
-
 
   for(i=0;i<VERTICES;i++){
     colores[i]=SIN_COLOR;
@@ -92,10 +91,10 @@ int esBipartito(int grafo[][VERTICES], int colores[VERTICES], int fuente){
 int main()
 {
   int colores[VERTICES];
-  int grafo[][VERTICES] = {{0, 1, 0, 1},
-                          {1, 0, 1, 0},
-                          {0, 1, 0, 1},
-                          {1, 0, 1, 0}};
+  int grafo[][VERTICES] = {{0, 0, 1, 1},
+                          {0, 0, 1, 1},
+                          {1, 1, 0, 0},
+                          {1, 1, 0, 0}};
 
   esBipartito(grafo,colores,0)?imprimirVertices(colores):puts("No es bipartito");
   return 0;
