@@ -55,11 +55,16 @@ int esBipartito(int grafo[][VERTICES], int fuente){
   while(!estaVacio(&cola)){
     u = quitar(&cola);
 
+    // Encontrar todos los vertices adyacentes sin color
     for(v=0;v<VERTICES;v++){
+      // Si existe una arista de u a v y si el destino v no tiene color
       if(grafo[u][v] && colores[v]==SIN_COLOR){
+        // Asignarle el color opuesto al vertice v adyacente de u
         colores[v] = AZUL - colores[u];
         encolar(&cola, v);
       }
+      // Si existe una arista de u a v y el destino v tiene el
+      // mismo color que u no es bipartito
       else if(grafo[u][v] && colores[v] == colores[u]){
         res = FALSO;
         break;
