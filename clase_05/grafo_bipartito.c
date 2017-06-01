@@ -34,6 +34,7 @@ int estaVacio(struct FIFO *cola){
   return cola->primero == cola->ultimo;
 }
 
+
 void imprimirVertices(int colores[VERTICES])
 {
   int i;
@@ -87,6 +88,7 @@ int esBipartito(int grafo[][VERTICES], int colores[VERTICES], int fuente){
   }
   return res;
 }
+
 
 int main()
 {
