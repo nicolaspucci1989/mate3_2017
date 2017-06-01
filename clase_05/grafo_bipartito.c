@@ -34,9 +34,24 @@ int estaVacio(struct FIFO *cola){
   return cola->primero == cola->ultimo;
 }
 
+void imprimirVertices(int colores[VERTICES])
+{
+  int i;
 
-int esBipartito(int grafo[][VERTICES], int fuente){
-  int colores[VERTICES];
+  printf("Vertices X.\n");
+  for(i=0;i<VERTICES;i++)
+    if(colores[i]==ROJO)
+      printf("%d ",i);
+
+
+  printf("\nVertices Y.\n");
+  for(i=0;i<VERTICES;i++)
+    if(colores[i]==AZUL)
+      printf("%d ",i);
+}
+
+
+int esBipartito(int grafo[][VERTICES], int colores[VERTICES], int fuente){
   int i;
   int u,v;
   int res = VERDADERO;
@@ -76,12 +91,12 @@ int esBipartito(int grafo[][VERTICES], int fuente){
 
 int main()
 {
+  int colores[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 0, 1},
                           {1, 0, 1, 0},
                           {0, 1, 0, 1},
                           {1, 0, 1, 0}};
 
-  esBipartito(grafo,0)?puts("Es Bipartito"):puts("No es bipartito");
-
+  esBipartito(grafo,colores,0)?imprimirVertices(colores):puts("No es bipartito");
   return 0;
 }
