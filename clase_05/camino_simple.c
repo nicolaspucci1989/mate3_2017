@@ -38,6 +38,7 @@ int caminoSimple(int grafo[][VERTICES], int fuente, int destino){
   struct FIFO cola;
   int i;
   int u;
+  cola.primero = cola.ultimo = 0;
   // Marcar todos los vertice como no visitados
   for(i=0;i<VERTICES;i++)
     visitado[i]=FALSO;
@@ -79,6 +80,7 @@ int main()
                           {1, 0, 0, 0},
                           {0, 1, 0, 1}};
   i=caminoSimple(grafo, 0,3);
+	putchar('\n');
 
   return 0;
 }
