@@ -74,12 +74,13 @@ int caminoSimple(int grafo[][VERTICES], int fuente, int destino){
 
 int main()
 {
-  int i;
   int grafo[][VERTICES] = {{0, 1, 0, 1},
                           {1, 0, 0, 1},
                           {1, 0, 0, 0},
                           {0, 1, 0, 1}};
-  i=caminoSimple(grafo, 0,3);
+  if(!caminoSimple(grafo, 0,3))
+		printf("No existe un camino.");
+
 	putchar('\n');
 
   return 0;
