@@ -32,13 +32,14 @@ int estaVacio(struct FIFO *cola){
 }
 
 
-int caminoSimple(int grafo[][VERTICES], int fuente, int destino){
+int caminoSimple(int grafo[][VERTICES], int predecesor[], int fuente, int destino){
   int visitado[VERTICES];
-  int res=FALSO;
   struct FIFO cola;
-  int i;
-  int u;
+  int i,u;
+	
+	// Inicializar cola
   cola.primero = cola.ultimo = 0;
+
   // Marcar todos los vertice como no visitados
   for(i=0;i<VERTICES;i++)
     visitado[i]=FALSO;
@@ -46,40 +47,42 @@ int caminoSimple(int grafo[][VERTICES], int fuente, int destino){
   // Marcar el vertice actual como visitado y encolarlo
   visitado[fuente]=VERDADERO;
   encolar(&cola,fuente);
+	predecesor[fuente]=-1;
 
   while (!estaVacio(&cola)) {
-    // Sacar un vertice de la cola. Imprimirlo
+    // Sacar un vertice de la cola.
     u = quitar(&cola);
-    printf("%d ", u);
 
     // Obtener todos los vertices adyacentes al vertice v
     // Si un nodo adyacente no fue visitado marcarlo como visitado y encolarlo
-    for(i=grafo[u][0]; i<VERTICES; i++){
-      // Si el nodo adyacente es el destino, retornar VERDADERO
-      if(i==destino){
-        res = VERDADERO;
-        break;
-      }
-
-      // Si no seguir con buscando con BFS
-      if(!visitado[i]){
+    for(i=0; i<VERTICES; i++){
+			if(grafo[u][i]==1 && visitado[i]==FALSO){
         visitado[i] = VERDADERO;
+				predecesor[i]=u;
         encolar(&cola, i);
       }
     }
   }
 
-  return res;
+  return visitado[destino]==VERDADERO;
 }
 
 int main()
 {
-  int grafo[][VERTICES] = {{0, 1, 0, 1},
-                          {1, 0, 0, 1},
+	int i;
+	int predecesores[VERTICES];
+  int grafo[][VERTICES] = {{0, 1, 1, 0},
                           {1, 0, 0, 0},
-                          {0, 1, 0, 1}};
-  if(!caminoSimple(grafo, 0,3))
+                          {1, 0, 0, 1},
+                          {0, 0, 1, 0}};
+
+  if(!caminoSimple(grafo, predecesores, 0,3))
 		printf("No existe un camino.");
+	else{
+		printf("existe camino");
+		for(i=0;i<VERTICES;i++)
+			printf("%d ",predecesores[i]);
+	}
 
 	putchar('\n');
 
