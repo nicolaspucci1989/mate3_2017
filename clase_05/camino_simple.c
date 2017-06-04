@@ -69,18 +69,18 @@ int caminoSimple(int grafo[][VERTICES], int predecesor[], int fuente, int destin
 
 int main()
 {
-	int i;
+	int i, destino=3;
 	int predecesores[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0},
                           {1, 0, 0, 0},
                           {1, 0, 0, 1},
                           {0, 0, 1, 0}};
 
-  if(!caminoSimple(grafo, predecesores, 0,3))
+  if(!caminoSimple(grafo, predecesores, 0,destino))
 		printf("No existe un camino.");
 	else{
-		printf("existe camino");
-		for(i=0;i<VERTICES;i++)
+		printf("existe camino\n");
+		for(i=destino;predecesores[i]!=-1;i=predecesores[i])
 			printf("%d ",predecesores[i]);
 	}
 
