@@ -36,7 +36,7 @@ int caminoSimple(int grafo[][VERTICES], int predecesor[], int fuente, int destin
   int visitado[VERTICES];
   struct FIFO cola;
   int i,u;
-	
+
 	// Inicializar cola
   cola.primero = cola.ultimo = 0;
 
@@ -53,38 +53,57 @@ int caminoSimple(int grafo[][VERTICES], int predecesor[], int fuente, int destin
     // Sacar un vertice de la cola.
     u = quitar(&cola);
 
-    // Obtener todos los vertices adyacentes al vertice v
+    // Obtener todos los vertices adyacentes al vertice u
     // Si un nodo adyacente no fue visitado marcarlo como visitado y encolarlo
     for(i=0; i<VERTICES; i++){
-			if(grafo[u][i]==1 && visitado[i]==FALSO){
-        visitado[i] = VERDADERO;
+			if(grafo[u][i] && !visitado[i]){
+        visitado[i]=VERDADERO;
 				predecesor[i]=u;
         encolar(&cola, i);
       }
+
     }
+
   }
 
   return visitado[destino]==VERDADERO;
 }
 
+
+void impresion(int predecesores[], int vector[], int origen, int destino)
+{
+  int j=VERTICES-1,i;
+
+  for (i = 0; i < VERTICES; i++)
+    vector[i]=-1;
+
+  vector[j] = destino;
+	for(j=j-1, i=destino; predecesores[i]!=-1; i=predecesores[i], j--){
+    vector[j]=predecesores[i];
+  }
+
+  for (i = 0; i < VERTICES; i++)
+    if(vector[i]!=-1)
+      printf("%d ", vector[i]+1);
+
+}
+
+
 int main()
 {
-	int i, destino=3;
+	int destino=3, origen=0, vector[VERTICES];
 	int predecesores[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0},
                           {1, 0, 0, 0},
                           {1, 0, 0, 1},
                           {0, 0, 1, 0}};
 
-  if(!caminoSimple(grafo, predecesores, 0,destino))
+  if(!caminoSimple(grafo, predecesores, origen,destino))
 		printf("No existe un camino.");
 	else{
 		printf("existe camino\n");
-		for(i=destino;predecesores[i]!=-1;i=predecesores[i])
-			printf("%d ",predecesores[i]);
+    impresion(predecesores,vector,origen,destino);
 	}
-
-	putchar('\n');
 
   return 0;
 }
