@@ -87,6 +87,16 @@ void antecesoresDe(int vertice, int predecesores[])
 }
 
 
+void hijosDe(int vertice, int grafo[][VERTICES], int distancia[])
+{
+  int i;
+  printf("Hijos de %d\n", vertice+1);
+  for(i=0; i<VERTICES; i++)
+    if(grafo[vertice][i] && distancia[i]>distancia[vertice])
+      printf("%d ", i+1);
+}
+
+
 int main()
 {
 	int origen=0, i;
@@ -102,5 +112,7 @@ int main()
     printf("Predecesor %d: %d\n", i+1, padreDe(i,predecesores));
   putchar('\n');
   antecesoresDe(4,predecesores);
+  putchar('\n');
+  hijosDe(2,grafo,distancia);
   return 0;
 }
