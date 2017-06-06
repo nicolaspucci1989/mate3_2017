@@ -74,7 +74,7 @@ void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int 
 
 int main()
 {
-	int destino=3, origen=0;
+	int origen=0, i;
 	int predecesores[VERTICES], distancia[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0, 0},
                           {0, 0, 0, 0, 0},
