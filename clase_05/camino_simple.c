@@ -70,28 +70,31 @@ int caminoSimple(int grafo[][VERTICES], int predecesor[], int fuente, int destin
 }
 
 
-void impresion(int predecesores[], int vector[], int origen, int destino)
+void impresion(int predecesores[], int aux[], int origen, int destino)
 {
   int j=VERTICES-1,i;
 
+  // Inicializar auxiliar
   for (i = 0; i < VERTICES; i++)
-    vector[i]=-1;
+    aux[i]=-1;
 
-  vector[j] = destino;
+  // Cargar auxiliar
+  aux[j] = destino;
 	for(j=j-1, i=destino; predecesores[i]!=-1; i=predecesores[i], j--){
-    vector[j]=predecesores[i];
+    aux[j]=predecesores[i];
   }
 
+  // Imprimir auxiliar
   for (i = 0; i < VERTICES; i++)
-    if(vector[i]!=-1)
-      printf("%d ", vector[i]+1);
+    if(aux[i]!=-1)
+      printf("%d ", aux[i]+1);
 
 }
 
 
 int main()
 {
-	int destino=3, origen=0, vector[VERTICES];
+	int destino=3, origen=0, aux[VERTICES];
 	int predecesores[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0},
                           {1, 0, 0, 0},
@@ -101,8 +104,8 @@ int main()
   if(!caminoSimple(grafo, predecesores, origen,destino))
 		printf("No existe un camino.");
 	else{
-		printf("existe camino\n");
-    impresion(predecesores,vector,origen,destino);
+		printf("Existe camino\n");
+    impresion(predecesores,aux,origen,destino);
 	}
 
   return 0;
