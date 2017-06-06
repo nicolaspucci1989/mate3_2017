@@ -3,11 +3,6 @@
 #define VERDADERO 1
 #define FALSO 0
 
-// int esDeHamilton()
-// {
-//   return esSimple() && contieneTodosLosVertices();
-// }
-
 
 int esSimple(int camino[], int n)
 {
@@ -21,16 +16,30 @@ int esSimple(int camino[], int n)
         break;
       }
   }
-  
+
   return res;
+}
+
+
+int contieneTodosLosVertices( int n, int verticesDelGrafo)
+{
+  return n == verticesDelGrafo;
+}
+
+
+int esDeHamilton(int camino[], int n, int verticesDelGrafo)
+{
+  return esSimple(camino,n) && contieneTodosLosVertices(n,verticesDelGrafo);
 }
 
 
 int main()
 {
   int camino[] = {0,1,2,3,4};
+  int verticesDelGrafo = 5;
   int n = sizeof(camino)/sizeof(camino[0]);
-  esSimple(camino,n)?printf("Es simple\n"):printf("No es simple\n");
+  esDeHamilton(camino,n,verticesDelGrafo)?printf("Si"):printf("No");
+  printf(" de hamilton\n");
 
   return 0;
 }
