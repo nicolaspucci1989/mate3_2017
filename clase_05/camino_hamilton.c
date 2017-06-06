@@ -14,16 +14,14 @@ int esSimple(int camino[], int n)
   int i,j,res=VERDADERO;
 
   for (i = 0; i < n; i++) {
-
     for (j = i+1; j < n; j++)
-      if(camino[i]==camino[j])
-        res=FALSO;break;
-
-    for(j = i-1; j>=0; j--)
-      if(camino[i]==camino[j])
-        res=FALSO;break;
+      if(camino[i]==camino[j]){
+        res=FALSO;
+        i=n;
+        break;
+      }
   }
-
+  
   return res;
 }
 
