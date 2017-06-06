@@ -72,18 +72,24 @@ void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int 
 }
 
 
+int padreDe(int vertice, int predecesores[])
+{
+  return predecesores[vertice];
+}
+
+
 int main()
 {
 	int origen=0, i;
 	int predecesores[VERTICES], distancia[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0, 0},
-                          {0, 0, 0, 0, 0},
-                          {0, 0, 0, 1, 1},
-                          {0, 0, 0, 0, 0},
-                          {0, 0, 0, 0, 0}};
+                          {1, 0, 0, 0, 0},
+                          {1, 0, 0, 1, 1},
+                          {0, 0, 0, 1, 0},
+                          {0, 0, 0, 1, 0}};
 
   caminoSimple(grafo, predecesores,distancia,origen);
   for(i=0;i<VERTICES;i++)
-    printf("Distancia %d: %d\n", i, distancia[i]);
+    printf("Predecesor %d: %d\n", i+1, padreDe(i,predecesores));
   return 0;
 }
