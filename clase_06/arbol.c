@@ -78,6 +78,15 @@ int padreDe(int vertice, int predecesores[])
 }
 
 
+void antecesoresDe(int vertice, int predecesores[])
+{
+  int i;
+
+  for(i=vertice; i > 0; i=predecesores[i])
+    printf("%d\n", predecesores[i]+1);
+}
+
+
 int main()
 {
 	int origen=0, i;
@@ -91,5 +100,7 @@ int main()
   caminoSimple(grafo, predecesores,distancia,origen);
   for(i=0;i<VERTICES;i++)
     printf("Predecesor %d: %d\n", i+1, padreDe(i,predecesores));
+  putchar('\n');
+  antecesoresDe(4,predecesores);
   return 0;
 }
