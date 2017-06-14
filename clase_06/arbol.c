@@ -32,7 +32,7 @@ int estaVacio(struct FIFO *cola){
 }
 
 
-void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int fuente)
+void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int raiz)
 {
   int visitado[VERTICES];
   struct FIFO cola;
@@ -46,10 +46,10 @@ void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int 
     visitado[i]=FALSO;
 
   // Marcar el vertice actual como visitado y encolarlo
-  visitado[fuente]=VERDADERO;
-  encolar(&cola,fuente);
-	predecesor[fuente]=-1;
-  distancia[fuente]=0;
+  visitado[raiz]=VERDADERO;
+  encolar(&cola,raiz);
+	predecesor[raiz]=-1;
+  distancia[raiz]=0;
 
   while (!estaVacio(&cola)) {
     // Sacar un vertice de la cola.
