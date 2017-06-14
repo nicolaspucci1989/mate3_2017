@@ -87,12 +87,12 @@ void antecesoresDe(int vertice, int predecesores[])
 }
 
 
-void hijosDe(int vertice,  int predecesores[])
+void hijosDe(int raiz,  int predecesores[])
 {
   int i;
-  printf("Hijos de %d\n", vertice+1);
+  printf("Hijos de %d\n", raiz+1);
   for(i=0; i<VERTICES; i++)
-    if(predecesores[i]==vertice)
+    if(predecesores[i]==raiz)
       printf("%d ", i+1);
 }
 
