@@ -97,6 +97,19 @@ void hijosDe(int raiz,  int predecesores[])
 }
 
 
+int esTerminal(int vertice, int predecesores[])
+{
+  int i, res = 1;
+
+  // Si el vertice es predecesor de algun nodo no es terminal
+  for(i=0;i<VERTICES;i++)
+    if(predecesores[i]==vertice)
+      res = 0;
+
+  return res;
+}
+
+
 int main()
 {
 	int origen=0, i;
@@ -107,6 +120,9 @@ int main()
                           {0, 0, 0, 1, 0},
                           {0, 0, 0, 1, 0}};
 
+  for(i=0;i<VERTICES;i++){
+    predecesores[i]=-1;
+  }
   caminoSimple(grafo, predecesores,distancia,origen);
   for(i=0;i<VERTICES;i++)
     printf("Predecesor %d: %d\n", i+1, padreDe(i,predecesores));
@@ -114,5 +130,8 @@ int main()
   antecesoresDe(4,predecesores);
   putchar('\n');
   hijosDe(2,predecesores);
+  putchar('\n');
+  esTerminal(4,predecesores)?printf("Si"):printf("No");
+  printf(" es terminal\n");
   return 0;
 }
