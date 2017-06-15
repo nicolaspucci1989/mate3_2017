@@ -97,6 +97,19 @@ void hijosDe(int raiz,  int predecesores[])
 }
 
 
+void hermanosDe(int vertice, int predecesor[])
+{
+  int padre = predecesor[vertice];
+  int i;
+
+  // Si tiene el mismo padre, son hermanos
+  for(i=0;i<VERTICES;i++){
+    if(padre == predecesor[i] && vertice != i)
+      printf("%d ", i);
+  }
+}
+
+
 int esTerminal(int vertice, int predecesores[])
 {
   int i, res = 1;
@@ -133,5 +146,7 @@ int main()
   putchar('\n');
   esTerminal(4,predecesores)?printf("Si"):printf("No");
   printf(" es terminal\n");
+  printf("Hermanos de 4\n");
+  hermanosDe(4, predecesores);
   return 0;
 }
