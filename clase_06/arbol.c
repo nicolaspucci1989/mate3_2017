@@ -138,8 +138,9 @@ void descendientesDe(int raiz, int predecesores[])
       // quitar un elemento
       u = quitar(&cola);
 
-      // imprimirlo
-      printf("%d ", u);
+      // No imprimirr el primero
+      if(u!=raiz)
+        printf("%d ", u);
 
       // buscar descendientes y ponerlos en cola
       for(i=0;i<VERTICES;i++)
