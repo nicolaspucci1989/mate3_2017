@@ -101,7 +101,7 @@ void hermanosDe(int vertice, int predecesor[])
   int padre = predecesor[vertice];
   int i;
 
-  // Si tiene el mismo padre, son hermanos
+  // Si tiene el mismo padre y no es un vertice repetido, son hermanos
   for(i=0;i<VERTICES;i++){
     if(padre == predecesor[i] && vertice != i)
       printf("%d ", i);
@@ -136,7 +136,7 @@ int main()
     predecesores[i]=-1;
   }
 
-  // Breadth first search para cargar predecesores y distanci.
+  // Breadth first search para cargar predecesores y distancias.
   bfs(grafo, predecesores,distancia,origen);
 
   vertice = 4;
@@ -158,7 +158,8 @@ int main()
   printf(" es terminal\n");
 
   // Hermanos
-  printf("Hermanos de 4\n");
-  hermanosDe(4, predecesores);
+  vertice = 4;
+  printf("Hermanos de %d: ", vertice);
+  hermanosDe(vertice, predecesores);
   return 0;
 }
