@@ -169,6 +169,11 @@ int main()
   // Breadth first search para cargar predecesores y distancias.
   bfs(grafo, predecesores,distancia,origen);
 
+  // Padre
+  vertice = 3;
+  printf("Padre de %d: %d",vertice,padreDe(vertice, predecesores));
+  putchar('\n');
+
   // Antecesores
   vertice = 4;
   printf("Antecesores de %d: ", vertice);
