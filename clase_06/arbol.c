@@ -122,6 +122,34 @@ int esTerminal(int vertice, int predecesores[])
 }
 
 
+void descendientesDe(int raiz, int predecesores[])
+{
+  int i, u;
+  struct FIFO cola;
+  cola.primero = cola.ultimo = 0;
+
+  // A partir de la raiz busco los descendientes
+  // Poner vertice en cola
+  encolar(&cola,raiz);
+
+  // Mientras la cola no este vacia
+  while(!estaVacio(&cola)){
+
+      // quitar un elemento
+      u = quitar(&cola);
+
+      // imprimirlo
+      printf("%d ", u);
+
+      // buscar descendientes y ponerlos en cola
+      for(i=0;i<VERTICES;i++)
+        // Si u es predecesor de i, ponerlo en cola.
+        if(predecesores[i]==u)
+          encolar(&cola,i);
+  }
+}
+
+
 int main()
 {
 	int origen=0, i, vertice;
@@ -162,5 +190,11 @@ int main()
   vertice = 4;
   printf("Hermanos de %d: ", vertice);
   hermanosDe(vertice, predecesores);
+  putchar('\n');
+
+  // Descendientes
+  vertice = 2;
+  printf("Descendientes de %d: ", vertice);
+  descendientesDe(vertice, predecesores);
   return 0;
 }
