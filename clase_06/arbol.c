@@ -152,7 +152,9 @@ int main()
   putchar('\n');
 
   // Terminal
-  esTerminal(4,predecesores)?printf("Si"):printf("No");
+  vertice = 4;
+  printf("Vertice %d ", vertice);
+  esTerminal(vertice,predecesores)?printf("si"):printf("no");
   printf(" es terminal\n");
 
   // Hermanos
