@@ -82,9 +82,7 @@ void antecesoresDe(int vertice, int predecesores[])
 {
   int i;
 
-  // Por cada vertice del arbol, mientras no sea la raiz
-    // imprimir su predecesores
-    // pasar a su predecesor
+  // Desde el vertice a la raiz, imprimir sus predecesores
   for(i=vertice; predecesores[i]!=-1; i=predecesores[i])
     printf("%d ", predecesores[i]);
 }
