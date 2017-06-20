@@ -41,5 +41,6 @@ int main()
   esDeHamilton(camino,n,verticesDelGrafo)?printf("Si"):printf("No");
   printf(" de hamilton\n");
 
+  getchar();
   return 0;
 }

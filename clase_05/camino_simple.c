@@ -108,5 +108,6 @@ int main()
     impresion(predecesores,aux,origen,destino);
 	}
 
+  getchar();
   return 0;
 }

@@ -115,5 +115,6 @@ int main()
 		printf("Grado vertice %d: %d\n", i+1, grados[i]);
 	}
 
+	getchar();
 	return 0;
 }

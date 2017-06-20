@@ -99,5 +99,6 @@ int main()
                           {1, 1, 0, 0}};
 
   esBipartito(grafo,colores,0)?imprimirVertices(colores):puts("No es bipartito");
+  getchar();
   return 0;
 }
