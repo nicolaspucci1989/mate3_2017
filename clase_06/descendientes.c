@@ -78,6 +78,7 @@ void descendientesDe(int raiz, int predecesores[])
   struct FIFO cola;
   cola.primero = cola.ultimo = 0;
 
+  // A partir de la raiz busco los descendientes
   // Poner vertice en cola
   encolar(&cola,raiz);
 
@@ -92,6 +93,7 @@ void descendientesDe(int raiz, int predecesores[])
 
       // buscar descendientes y ponerlos en cola
       for(i=0;i<VERTICES;i++)
+        // Si u es predecesor de i, ponerlo en cola.
         if(predecesores[i]==u)
           encolar(&cola,i);
   }
@@ -101,23 +103,24 @@ void descendientesDe(int raiz, int predecesores[])
 int main()
 {
 
-	int origen=0, i;
+	int raiz=0, i;
 	int predecesores[VERTICES], distancia[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0, 0},
                           {1, 0, 0, 0, 0},
                           {1, 0, 0, 1, 1},
-                          {0, 0, 0, 1, 0},
-                          {0, 0, 0, 1, 0}};
+                          {0, 0, 1, 0, 0},
+                          {0, 0, 1, 0, 0}};
 
   for(i=0;i<VERTICES;i++){
     predecesores[i]=-1;
   }
-  caminoSimple(grafo, predecesores,distancia,origen);
+  caminoSimple(grafo, predecesores,distancia,raiz);
   for(i=0;i<VERTICES;i++){
     printf("%d ", predecesores[i]);
   }
+  raiz=3;
 
-  printf("\ndescendientes de %d\n", 0);
-  descendientesDe(0, predecesores);
+  printf("\ndescendientes de %d\n", raiz);
+  descendientesDe(raiz, predecesores);
   return 0;
 }
