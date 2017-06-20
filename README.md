@@ -1,4 +1,4 @@
-# Ejercicios de practica matematica III UNSAM 2017
+# Ejercicios de programacion matematica III UNSAM 2017
 
 ## Clase 1
 1. Que es un dominio de una relación
