@@ -132,6 +132,7 @@ int main()
                           {0, 0, 1, 0, 0},
                           {0, 0, 1, 0, 0}};
 
+  // Cargar predecesores
   for(i=0;i<VERTICES;i++){
     predecesores[i]=-1;
   }
@@ -139,8 +140,8 @@ int main()
   // Breadth first search para cargar predecesores y distancias.
   bfs(grafo, predecesores,distancia,origen);
 
-  vertice = 4;
   // Antecesores
+  vertice = 4;
   printf("Antecesores de %d: ", vertice);
   antecesoresDe(vertice,predecesores);
   putchar('\n');
