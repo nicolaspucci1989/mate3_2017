@@ -36,9 +36,8 @@ int main()
                           {1, 1, 0, 0},
                           {1, 1, 0, 0}};
 
-  assert(cardinalAristas(grafo) == 4);
-  assert(cardinalVertices() == 4);
-  assert(esPlano(grafo) == VERDADERO);
-  puts("Todo OK!");
+  printf("Grafo %s es plano\n", esPlano(grafo)?"si":"no");
+  puts("Presione enter");
+  getchar();
   return 0;
 }
