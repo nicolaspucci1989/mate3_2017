@@ -26,7 +26,7 @@ int cardinalVertices()
 int esPlano(int grafo[VERTICES][VERTICES])
 {
   // |A| > 2|V|-4
-  return cardinalAristas(grafo) > 2 * cardinalVertices() - 4;
+  return cardinalAristas(grafo) <= 3 * cardinalVertices() - 6;
 }
 
 int main()
