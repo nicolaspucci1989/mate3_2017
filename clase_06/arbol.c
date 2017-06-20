@@ -32,7 +32,7 @@ int estaVacio(struct FIFO *cola){
 }
 
 
-void caminoSimple(int grafo[][VERTICES], int predecesor[], int distancia[], int raiz)
+void bfs(int grafo[][VERTICES], int predecesor[], int distancia[], int raiz)
 {
   int visitado[VERTICES];
   struct FIFO cola;
@@ -83,17 +83,16 @@ void antecesoresDe(int vertice, int predecesores[])
   int i;
 
   for(i=vertice; i > 0; i=predecesores[i])
-    printf("%d\n", predecesores[i]+1);
+    printf("%d ", predecesores[i]+1);
 }
 
 
 void hijosDe(int raiz,  int predecesores[])
 {
   int i;
-  printf("Hijos de %d\n", raiz+1);
   for(i=0; i<VERTICES; i++)
     if(predecesores[i]==raiz)
-      printf("%d ", i+1);
+      printf("%d ", i);
 }
 
 
@@ -125,27 +124,38 @@ int esTerminal(int vertice, int predecesores[])
 
 int main()
 {
-	int origen=0, i;
+	int origen=0, i, vertice;
 	int predecesores[VERTICES], distancia[VERTICES];
   int grafo[][VERTICES] = {{0, 1, 1, 0, 0},
                           {1, 0, 0, 0, 0},
                           {1, 0, 0, 1, 1},
-                          {0, 0, 0, 1, 0},
-                          {0, 0, 0, 1, 0}};
+                          {0, 0, 1, 0, 0},
+                          {0, 0, 1, 0, 0}};
 
   for(i=0;i<VERTICES;i++){
     predecesores[i]=-1;
   }
-  caminoSimple(grafo, predecesores,distancia,origen);
-  for(i=0;i<VERTICES;i++)
-    printf("Predecesor %d: %d\n", i+1, padreDe(i,predecesores));
+
+  // Breadth first search para cargar predecesores y distanci.
+  bfs(grafo, predecesores,distancia,origen);
+
+  vertice = 4;
+  // Antecesores
+  printf("Antecesores de %d: ", vertice);
+  antecesoresDe(vertice,predecesores);
   putchar('\n');
-  antecesoresDe(4,predecesores);
+
+  // Hijos
+  vertice = 2;
+  printf("Hijos de %d: ", vertice);
+  hijosDe(vertice,predecesores);
   putchar('\n');
-  hijosDe(2,predecesores);
-  putchar('\n');
+
+  // Terminal
   esTerminal(4,predecesores)?printf("Si"):printf("No");
   printf(" es terminal\n");
+
+  // Hermanos
   printf("Hermanos de 4\n");
   hermanosDe(4, predecesores);
   return 0;
