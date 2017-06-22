@@ -49,6 +49,21 @@ void positivosNegativos(int matriz[FILAS][COLUMNAS])
   printf("Negativos %d\n", negativos);
 }
 
+void valorMaximo(int matriz[FILAS][COLUMNAS])
+{
+  int i,j,fila,columna,maximo=-99999999;
+
+  for(i=0;i<FILAS;i++)
+    for(j=0;j<COLUMNAS;j++)
+      if(matriz[i][j]>maximo){
+        maximo=matriz[i][j];
+        fila=i;
+        columna=j;
+      }
+  printf("Maximo: %d\n", maximo);
+  printf("Posicion: (%d,%d)\n", fila,columna);
+}
+
 int main()
 {
   int matriz[FILAS][COLUMNAS];
@@ -58,6 +73,7 @@ int main()
   imprimirMatriz(matriz);
   printf("Suma de la diagonal = %d\n", sumaDiagonal(matriz));
   positivosNegativos(matriz);
+  valorMaximo(matriz);
 
   puts("Presione enter para continuar");
   getchar();
