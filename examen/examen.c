@@ -7,7 +7,7 @@ void imprimirMatriz(int matriz[FILAS][COLUMNAS])
 {
   int i,j;
   for(i=0;i<FILAS;i++){
-    for(j=0;j<COLUMNAS;j++){}
+    for(j=0;j<COLUMNAS;j++)
       printf("%d ", matriz[i][j]);
     putchar('\n');
   }
@@ -64,7 +64,7 @@ void valorMaximo(int matriz[FILAS][COLUMNAS])
   for(i=0;i<FILAS;i++)
     for(j=0;j<COLUMNAS;j++)
       if(matriz[i][j] == maximo)
-        printf("(%d,%d) ", i,j);
+        printf("(%d,%d) ", i+1,j+1);
 }
 
 int main()
@@ -73,12 +73,13 @@ int main()
   printf("Ingrese los elementos de la matriz\n");
   cargarMatriz(matriz);
   putchar('\n');
+  system("cls");
   imprimirMatriz(matriz);
   printf("Suma de la diagonal = %d\n", sumaDiagonal(matriz));
   positivosNegativos(matriz);
   valorMaximo(matriz);
 
-  puts("Presione enter para continuar");
+  puts("\nPresione enter para continuar");
   getchar();
   return 0;
 }
