@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define FILAS 2
-#define COLUMNAS 2
+#define FILAS 4
+#define COLUMNAS 4
 
 void imprimirMatriz(int matriz[FILAS][COLUMNAS])
 {
@@ -51,17 +51,20 @@ void positivosNegativos(int matriz[FILAS][COLUMNAS])
 
 void valorMaximo(int matriz[FILAS][COLUMNAS])
 {
-  int i,j,fila,columna,maximo=-99999999;
+  int i,j,maximo=-99999999;
 
   for(i=0;i<FILAS;i++)
     for(j=0;j<COLUMNAS;j++)
-      if(matriz[i][j]>maximo){
+      if(matriz[i][j]>maximo)
         maximo=matriz[i][j];
-        fila=i;
-        columna=j;
-      }
+        
   printf("Maximo: %d\n", maximo);
-  printf("Posicion: (%d,%d)\n", fila,columna);
+  printf("Posicion:");
+
+  for(i=0;i<FILAS;i++)
+    for(j=0;j<COLUMNAS;j++)
+      if(matriz[i][j] == maximo)
+        printf("(%d,%d) ", i,j);
 }
 
 int main()
